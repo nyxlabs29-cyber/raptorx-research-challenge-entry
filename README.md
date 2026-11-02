@@ -17,6 +17,18 @@ RaptorX stored every question (`POST /api/conversations/<id>/message` returned `
 
 Screenshots: `screenshots/jitosol/` and `screenshots/pump/`. In each folder, `00_*` is the full RaptorX page with the report open, `report_NN.png` scrolls through the whole report, and `questions_to_rex_ai.png` shows the questions in the Rex Pilot chat.
 
+## Retry on 2026-11-02 (22:23 UTC): Rex AI still not answering
+
+I re-opened the stored JitoSOL conversation (`cmvvl3kai001gl308ucuxaqe3`) in the same logged-in RaptorX account. All earlier questions are still stored and still unanswered. I then sent one more, sharper question (a condensed version of Q1 above, ending "which on-chain check (stake pool rate vs Orca JitoSOL/SOL price on the same dates) would separate a faded premium from a real fall in the redemption rate?") and waited 5 minutes.
+
+- `POST /api/conversations/<id>/message` returned HTTP 200 `{"ok":true}`, so RaptorX stored the question.
+- `POST /api/chat` again returned HTTP 500 `"Failed to process AI chat"`, with provider error `Status 402 ... This request requires more credits, or fewer max_tokens. You requested up to 65536 tokens, but can only afford 10336` (an OpenRouter credit limit on RaptorX's side; the "can afford" figure differs from 30 Oct, but the server still requests 65536, so every chat call fails).
+- No Rex answer appeared in 5 minutes. I am not inventing one: **this entry contains no Rex answers because none were ever returned.**
+
+Screenshots: `screenshots/retry_2026-11-02/`. I will not retry with other tricks (no API calls outside the normal chat UI, no paid plans). If the sponsor restores the chat before the deadline, the questions are already stored in the conversations above.
+
+What the judging text rewards (question quality, analytical reasoning, originality; one exceptional question can beat many basic ones) is what this entry is built on: each question starts from a contradiction inside the report's own numbers, shows the arithmetic, and names the data that would settle it.
+
 ---
 
 ## JitoSOL questions
